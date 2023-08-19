@@ -28,11 +28,6 @@ function NavigationBar() {
             <Flex align="center">
                 <Box>
                     <Button colorScheme="whiteAlpha" variant="ghost" marginRight="1rem">
-                        <Link to="/video/:videoId">Video</Link>
-                    </Button>
-                </Box>
-                <Box>
-                    <Button colorScheme="whiteAlpha" variant="ghost" marginRight="1rem">
                         <Link to="/products">Shop</Link>
                     </Button>
                     <Button colorScheme="whiteAlpha" variant="ghost" marginRight="1rem">

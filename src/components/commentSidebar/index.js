@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 import CommentCard from '../comment';
 import axios from 'axios';
 import { format } from "date-fns";
+import InputCommentBox from '../inputComment';
+import { Flex, VStack } from '@chakra-ui/react';
 
 const Sidebar = ({ isOpen, onClose }) => {
     const [commentArray, setCommentArray] = useState([]);
@@ -12,18 +14,34 @@ const Sidebar = ({ isOpen, onClose }) => {
 
     const videoId = useParams().videoId
 
-    useEffect(() => {
+    const getComment = (videoId) => {
         axios.get(`http://localhost:5000/video/${videoId}/comments`)
-            .then(response => {
-                setCommentArray(response.data)
-                setLoading(false);
-                console.log(response.data)
-            })
-            .catch(err => {
-                setError(err);
-                setLoading(false);
+        .then(response => {
+            setCommentArray(response.data)
+            setLoading(false);
+        })
+        .catch(err => {
+            setError(err);
+            setLoading(false);
+        });
+    }
+
+    const onSendComment = async (videoId, commentMessage) => {
+        try {
+            await axios.post(`http://localhost:5000/video/${videoId}/comment`, {
+                userId: "64c69e84381420f29c2a0365",
+                comment: commentMessage
             });
-    }, [videoId, commentArray]);
+            getComment(videoId)
+        } catch (error) {
+            console.log(error)
+            console.error('Error sending message:', error);
+        }
+    }
+
+    useEffect(() => {
+        getComment(videoId)
+    }, [videoId]);
 
     if (loading) {
         return <p>Loading...</p>;
@@ -49,15 +67,20 @@ const Sidebar = ({ isOpen, onClose }) => {
                 zIndex: 1000,
             }}
         >
-            <button onClick={onClose}>Close Sidebar</button>
-            {commentArray.map((commentElement) => {
-                return (
-                    <CommentCard comment={commentElement.comment}
-                        author={commentElement.user.name}
-                        avatarUrl={commentElement.user.profilePicture}
-                        createdAt={format(new Date(commentElement.createdAt), "dd MMMM yyyy h:mm a")} />
-                )
-            })}
+            <Flex direction="column" height="90%">
+                <button onClick={onClose}>Close Comment</button>
+                <VStack paddingBottom="2" flex="1" overflowY="auto">
+                    {commentArray.map((commentElement) => {
+                        return (
+                            <CommentCard comment={commentElement.comment}
+                                author={commentElement.user.name}
+                                avatarUrl={commentElement.user.profilePicture}
+                                createdAt={format(new Date(commentElement.createdAt), "dd MMM yyyy h:mm a")} />
+                        )
+                    })}
+                </VStack>
+            </Flex>
+            <InputCommentBox onSendComment={onSendComment} />
         </motion.div>
     );
 };

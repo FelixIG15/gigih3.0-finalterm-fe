@@ -5,7 +5,7 @@ function CommentCard(props) {
     const { comment, author, avatarUrl, createdAt } = props
 
     return (
-        <Box borderWidth="1px" borderRadius="lg" p={4} marginBottom={4}>
+        <Box width="100%" borderWidth="1px" borderRadius="lg" p={4} marginBottom={4}>
             <Flex>
                 <Box className="avatar-container" marginRight={4} width="20%">
                     <Avatar src={avatarUrl} alt={`${author}'s Avatar`} />
@@ -16,7 +16,7 @@ function CommentCard(props) {
                             <Text fontWeight="bold">{author}</Text>
                         </Flex>
                         <Flex justifyContent="flex-end">
-                            <Text color="gray.500" fontSize="xs">
+                            <Text color="gray.500" fontSize="10px">
                                 {createdAt}
                             </Text>
                         </Flex>
@@ -29,12 +29,5 @@ function CommentCard(props) {
         </Box>
     );
 };
-
-// For Testing Purpose
-CommentCard.defaultProps = {
-    comment: "Wow! I'm Interested!",
-    author: "Felix",
-    createdAt: "2023-08-17"
-}
 
 export default CommentCard;
