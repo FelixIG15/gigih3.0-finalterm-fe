@@ -1,4 +1,4 @@
-import { Flex, Box, Heading } from "@chakra-ui/react";
+import { Flex, Heading } from "@chakra-ui/react";
 import ReactPlayer from 'react-player/youtube'
 
 function VideoPlayer(props) {

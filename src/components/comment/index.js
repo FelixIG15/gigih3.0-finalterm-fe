@@ -21,8 +21,8 @@ function CommentCard(props) {
                             </Text>
                         </Flex>
                     </Flex>
-                    <Flex>
-                        <Text fontSize="xs">{comment}</Text>
+                    <Flex justifyContent="flex-start">
+                        <Text fontSize="xs" textAlign="left">{comment}</Text>
                     </Flex>
                 </Box>
             </Flex>
