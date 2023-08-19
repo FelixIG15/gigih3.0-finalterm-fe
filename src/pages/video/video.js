@@ -20,7 +20,7 @@ function VideoPage() {
     const videoId = useParams().videoId
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/video/${videoId}`)
+        axios.get(`${"https://gigihshop-be.onrender.com"}/video/${videoId}`)
             .then(response => {
                 const { title, url, products } = response.data
                 setVideo({ videoTitle: title, videoUrl: url })

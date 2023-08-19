@@ -9,7 +9,7 @@ function Home() {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/video`)
+        axios.get(`${"https://gigihshop-be.onrender.com"}/video`)
             .then(response => {
                 setVideoArray(response.data)
                 setLoading(false);

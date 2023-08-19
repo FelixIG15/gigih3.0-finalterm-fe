@@ -11,11 +11,11 @@ const Sidebar = ({ isOpen, onClose }) => {
     const [commentArray, setCommentArray] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-
+    
     const videoId = useParams().videoId
 
     const getComment = (videoId) => {
-        axios.get(`http://localhost:5000/video/${videoId}/comments`)
+        axios.get(`${"https://gigihshop-be.onrender.com"}/video/${videoId}/comments`)
         .then(response => {
             setCommentArray(response.data)
             setLoading(false);
@@ -28,7 +28,7 @@ const Sidebar = ({ isOpen, onClose }) => {
 
     const onSendComment = async (videoId, commentMessage) => {
         try {
-            await axios.post(`http://localhost:5000/video/${videoId}/comment`, {
+            await axios.post(`${"https://gigihshop-be.onrender.com"}/video/${videoId}/comment`, {
                 userId: "64c69e84381420f29c2a0365",
                 comment: commentMessage
             });
