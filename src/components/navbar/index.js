@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Flex, Box, Text, Button } from '@chakra-ui/react';
 
@@ -11,6 +11,7 @@ function NavigationBar() {
             padding="1rem"
             bg="blue.500"
             color="white"
+            height="50px"
         >
             <Link to="/">
                 <Flex align="center">
@@ -20,7 +21,7 @@ function NavigationBar() {
                         </Text>
                     </Box>
                     <Box>
-                        <img src="/logo512.png" alt="Logo" height="50px" width="50px" />
+                        <img src="/logo512.png" alt="Logo" height="100%" width="50px" />
                     </Box>
                 </Flex>
             </Link>

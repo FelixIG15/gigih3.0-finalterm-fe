@@ -5,11 +5,13 @@ function VideoPlayer(props) {
     const { videoTitle, videoUrl } = props
   
     return (
-        <Flex alignContent="flex-start" justifyContent="center" width="100%">
-            <Box width="100%" justifyContent="center">
+        <Flex flexDirection="column" alignContent="flex-start" justifyContent="center" width="100%">
+            <Flex justifyContent="flex-start" padding={2}>
                 <Heading>{videoTitle}</Heading>
+            </Flex>
+            <Flex justifyContent="center" paddingBottom={2}>
                 <ReactPlayer className='react-player' width="100%" url={videoUrl} />
-            </Box>
+            </Flex>
         </Flex>
     )
 }

@@ -1,10 +1,10 @@
 import { Card } from "@chakra-ui/react";
-import { React, useState, useEffect } from "react";
+import React from "react";
 import { Image, Heading, CardBody, Stack, Text, Divider, CardFooter, ButtonGroup, Button } from "@chakra-ui/react";
 
 function Product(props) {
-    const { productName, productImageUrl, price, description } = props
-    
+    const { productName, productImageUrl, price } = props
+
     return (
         <Card maxW='100%' height="300px">
             <CardBody p="2" maxHeight="70%">
@@ -13,7 +13,7 @@ function Product(props) {
                     alt={productName}
                     borderRadius='lg'
                     width="100%"
-                    height="auto"
+                    height="60%"
                 />
                 <Stack mt='2' spacing='2'>
                     <Heading size='xs'>{productName}</Heading>
